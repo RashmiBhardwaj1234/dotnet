@@ -3,7 +3,7 @@ stages:
   - test
   - deploy
 
-release:
+deploy:
   stage: deploy
   only:
     - master
@@ -14,7 +14,7 @@ release:
     # The output path is relative to the position of the csproj-file
     - dotnet publish -c Release -o ../publish MyProject/MyProject.csproj
     
-debug:
+test:
   stage: test
   script:
     - dotnet test MyProject.Test/MyProject.Test.csproj
