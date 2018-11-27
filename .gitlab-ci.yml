@@ -1,5 +1,6 @@
 image: microsoft/dotnet:latest
 stages:
+  - build
   - test
   - deploy
 
@@ -18,3 +19,8 @@ test:
   stage: test
   script:
     - dotnet test MyProject.Test/MyProject.Test.csproj
+
+build:
+  stage: build
+  script:
+    - dotnet build MyProject.Test/MyProject.Test.csproj
