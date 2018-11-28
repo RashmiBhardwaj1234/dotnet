@@ -12,7 +12,7 @@ codequality_preview:
     - export PATH="$PATH:/root/.dotnet/tools"
     - dotnet sonarscanner begin /k:"abt123" /d:sonar.host.url="http://35.243.200.50:9000" /d:sonar.login="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
     - dotnet build
-    - dotnet sonarscanner end
+    - dotnet sonarscanner end /d:sonar.login="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
 
 
 
