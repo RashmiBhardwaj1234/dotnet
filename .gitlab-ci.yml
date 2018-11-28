@@ -9,7 +9,6 @@ codequality_preview:
   stage: qa
   script:
     - wget https://github-production-release-asset-2e65be.s3.amazonaws.com/34444711/ab260b80-d092-11e8-8f2c-167cffaf4f47?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20181128%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20181128T091435Z&X-Amz-Expires=300&X-Amz-Signature=b71293727a14514557688ef6b73ca6cd566241cd3266093609f64645b629117a&X-Amz-SignedHeaders=host&actor_id=43195913&response-content-disposition=attachment%3B%20filename%3Dsonar-scanner-msbuild-4.4.2.1543-net46.zip&response-content-type=application%2Foctet-stream
-    - apt-get install unzip
     - ls
     - dotnet tool install --global dotnet-sonarscanner --version 4.3.1
     - export PATH="$PATH:/root/.dotnet/tools"
