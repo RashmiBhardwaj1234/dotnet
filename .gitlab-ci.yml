@@ -1,4 +1,12 @@
 image: microsoft/dotnet:latest
+
+ENV SONAR_SCANNER_OPTS="-Xmx512m"
+ENV SONAR_URL="http://35.243.200.50:9000"
+ENV SONAR_TOKEN="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
+ENV SONAR_PROJECT_KEY="abt123"
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
+
 stages:
   - qa
   - build
@@ -10,9 +18,10 @@ codequality_preview:
   script:
     - dotnet tool install --global dotnet-sonarscanner --version 4.3.1
     - export PATH="$PATH:/root/.dotnet/tools"
-    - dotnet sonarscanner begin /k:"abt123" /d:sonar.host.url="http://35.243.200.50:9000" /d:sonar.login="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
-    - dotnet build
-    - dotnet sonarscanner end /d:sonar.login="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
+    - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="/TestResults/" --verbosity=normal --results-directory /TestResults/ --logger "trx;LogFileName=test_results.trx" ./Tests/Tests.csproj
+    - dotnet sonarscanner begin /k:${SONAR_PROJECT_KEY} /d:sonar.host.url=${SONAR_URL} /d:sonar.login=${SONAR_TOKEN} /d:sonar.verbose=true /d:sonar.cs.opencover.reportsPaths="TestResults/coverage.opencover.xml" /d:sonar.coverage.exclusions="**Tests*.cs,**Integration*.cs"
+    - dotnet publish MyProject.sln -o /publish/
+    - dotnet sonarscanner end /d:sonar.login=${SONAR_TOKEN}
 
 
 
