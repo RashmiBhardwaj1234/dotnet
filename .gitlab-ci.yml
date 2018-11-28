@@ -1,8 +1,14 @@
 image: microsoft/dotnet:latest
 stages:
+  - qa
   - build
   - test
   - deploy
+  
+codequality_preview:
+  stage: qa
+  script:
+    - sonar-scanner -Dsonar.host.url=https://sonarqube.example.com -Dsonar.analysis.mode=preview -Dsonar.login=$SONARQUBE_TOKEN -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_BUILD_REF_NAME -Dsonar.projectVersion=$CI_BUILD_ID -Dsonar.branch=$CI_BUILD_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_URL 
 
 deploy:
   stage: deploy
@@ -24,3 +30,6 @@ build:
   stage: build
   script:
     - dotnet build MyProject.Test/MyProject.Test.csproj
+    
+    
+ 
