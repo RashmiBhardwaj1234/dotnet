@@ -1,4 +1,4 @@
-image: microsoft/windowsservercore:latest
+image: microsoft/dotnet-framework:4.7.2-runtime-windowsservercore-ltsc2016
 stages:
   - qa
   - build
