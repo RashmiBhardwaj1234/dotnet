@@ -1,6 +1,4 @@
 image: microsoft/dotnet:latest
-
-
 ENV SONAR_URL="http://35.243.200.50:9000"
 ENV SONAR_TOKEN="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
 ENV SONAR_PROJECT_KEY="abt123"
