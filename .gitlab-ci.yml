@@ -10,9 +10,9 @@ codequality_preview:
   script:
     - dotnet tool install --global dotnet-sonarscanner
     - export PATH="$PATH:/root/.dotnet/tools"
-    - dotnet sonarscanner begin /k:"akshay123" /d:sonar.host.url="http://35.243.243.55:9000" /d:sonar.login="c610771440c4a0fead6951cb3ea0a839b9ba173b"
+    - dotnet sonarscanner begin /k:"akshay123" /d:sonar.host.url="http://35.243.243.55:9000" /d:sonar.login="8a3ad9cc708f8dde1d313751a6e6dad338670c26"
     - dotnet build
-    - dotnet sonarscanner end /d:sonar.login=${c610771440c4a0fead6951cb3ea0a839b9ba173b}
+    - dotnet sonarscanner end /d:sonar.login=${8a3ad9cc708f8dde1d313751a6e6dad338670c26}
 
 
 
