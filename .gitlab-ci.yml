@@ -1,4 +1,4 @@
-image: microsoft/dotnet-framework
+image: microsoft/dotnet-framework-samples:aspnetapp
 stages:
   - qa
   - build
