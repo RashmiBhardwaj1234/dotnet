@@ -8,13 +8,12 @@ stages:
 codequality_preview:
   stage: qa
   script:
-    - dotnet tool install --global dotnet-sonarscanner
+    - dotnet tool install --global dotnet-sonarscanner --version 4.3.1
     - export PATH="$PATH:/root/.dotnet/tools"
-    -  find ~/ -type f -name "whereis SonarScanner.MSBuild.dll"
-    - chmod -R 777 .
-    - dotnet </root/.dotnet/tools/SonarScanner.MSBuild.dll> sonarscanner begin /k:"akshay123" /d:sonar.host.url="http://35.243.243.55:9000" /d:sonar.login="c610771440c4a0fead6951cb3ea0a839b9ba173b"
-    - dotnet build
-    - dotnet </root/.dotnet/tools/SonarScanner.MSBuild.dll> sonarscanner end /d:sonar.login="c610771440c4a0fead6951cb3ea0a839b9ba173b"
+    - SonarQube.Scanner.MSBuild.exe begin /k:"abt123" /d:sonar.host.url="http://35.243.200.50:9000" /d:sonar.login="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
+    - MsBuild.exe /t:Rebuild
+    - SonarQube.Scanner.MSBuild.exe end /d:sonar.login="77489d36e668cf8f4f0ca42f9c1131d98a8fd604"
+
 
 
 
