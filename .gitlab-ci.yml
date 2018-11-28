@@ -7,8 +7,12 @@ stages:
   
 codequality_preview:
   stage: qa
+  image: 
   script:
-    - sonar-scanner -Dsonar.host.url=https://sonarqube.example.com -Dsonar.analysis.mode=preview -Dsonar.login=$SONARQUBE_TOKEN -Dsonar.gitlab.commit_sha=$CI_BUILD_REF -Dsonar.gitlab.ref_name=$CI_BUILD_REF_NAME -Dsonar.projectVersion=$CI_BUILD_ID -Dsonar.branch=$CI_BUILD_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_URL 
+    - SonarQube.Scanner.MSBuild.exe begin /k:"akshay123" /d:sonar.host.url="http://35.243.243.55:9000" /d:sonar.login="c610771440c4a0fead6951cb3ea0a839b9ba173b"
+    - MsBuild.exe /t:Rebuild
+    - SonarQube.Scanner.MSBuild.exe end /d:sonar.login="c610771440c4a0fead6951cb3ea0a839b9ba173b"
+
 
 deploy:
   stage: deploy
